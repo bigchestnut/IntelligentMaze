@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QVBoxLayout * mainLayout;
+    QVBoxLayout * downLayout;
+    QHBoxLayout * upLayout;
 };
 
 #endif // MAINWINDOW_H
