@@ -24,8 +24,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    mainwindowcontainer.cpp \
+    upwindowcontainer.cpp \
+    downwindowcontainer.cpp \
+    mazelabel.cpp \
+    routelabel.cpp \
+    comparelabel.cpp \
+    mazewindow.cpp \
+    infowindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    mainwindowcontainer.h \
+    upwindowcontainer.h \
+    downwindowcontainer.h \
+    mazelabel.h \
+    routelabel.h \
+    comparelabel.h \
+    mazewindow.h \
+    infowindow.h
 
-FORMS    += mainwindow.ui
+FORMS    +=

@@ -2,11 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-namespace Ui {
-class MainWindow;
-}
+#include <mainwindowcontainer.h>
 
 class MainWindow : public QMainWindow
 {
@@ -17,10 +13,8 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
-    QVBoxLayout * mainLayout;
-    QVBoxLayout * downLayout;
-    QHBoxLayout * upLayout;
+    MainWindowContainer *mainWidget;
+    void               loadWidget();
 };
 
 #endif // MAINWINDOW_H
