@@ -5,7 +5,7 @@ MainWindowContainer::MainWindowContainer(QWidget *parent) : QWidget(parent),
       upWindow(new UpWindowContainer()),
       downWindow(new DownWindowContainer())
 {
-    mainLayout->addWidget(upWindow);
-    mainLayout->addWidget(downWindow);
+    mainLayout->addWidget(upWindow, 1);
+    mainLayout->addWidget(downWindow, 5);
     this->setLayout(mainLayout);
 }

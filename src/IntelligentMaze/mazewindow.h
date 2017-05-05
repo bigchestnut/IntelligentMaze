@@ -3,7 +3,9 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
-#include <QLabel>
+#include <QGraphicsView>
+#include <QPaintEvent>
+#include <QPainter>
 class MazeWindow : public QWidget
 {
     Q_OBJECT
@@ -13,9 +15,11 @@ public:
 signals:
 
 public slots:
+
 private:
+    void paintEvent();
     QHBoxLayout * mainLayout;
-    QLabel * m_title;
+    QGraphicsView * m_graphView;
 };
 
 #endif // MAZEWINDOW_H

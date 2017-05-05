@@ -5,7 +5,7 @@ DownWindowContainer::DownWindowContainer(QWidget *parent) : QWidget(parent),
     mazeWindow(new MazeWindow()),
     infoWindow(new InfoWindow())
 {
-    mainLayout->addWidget(mazeWindow);
-    mainLayout->addWidget(infoWindow);
+    mainLayout->addWidget(mazeWindow, 4);
+    mainLayout->addWidget(infoWindow, 1);
     this->setLayout(mainLayout);
 }

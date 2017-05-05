@@ -6,8 +6,8 @@ UpWindowContainer::UpWindowContainer(QWidget *parent) : QWidget(parent),
     routeLabel(new RouteLabel()),
     compareLabel(new CompareLabel())
 {
-    mainLayout->addWidget(mazeLabel);
-    mainLayout->addWidget(routeLabel);
-    mainLayout->addWidget(compareLabel);
+    mainLayout->addWidget(mazeLabel, 1);
+    mainLayout->addWidget(routeLabel, 1);
+    mainLayout->addWidget(compareLabel, 1);
     this->setLayout(mainLayout);
 }

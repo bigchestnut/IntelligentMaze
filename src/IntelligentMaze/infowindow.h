@@ -2,7 +2,9 @@
 #define INFOWINDOW_H
 
 #include <QWidget>
-
+#include <QVBoxLayout>
+#include <QTextBrowser>
+#include <QPushButton>
 class InfoWindow : public QWidget
 {
     Q_OBJECT
@@ -12,6 +14,11 @@ public:
 signals:
 
 public slots:
+private:
+    QVBoxLayout* mainLayout;
+    QTextBrowser* m_textBro1;
+    QTextBrowser* m_textBro2;
+    QPushButton* m_switchBtn;
 };
 
 #endif // INFOWINDOW_H
