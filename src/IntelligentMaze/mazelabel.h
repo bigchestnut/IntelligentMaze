@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QRadioButton>
 #include <QPushButton>
+#include "mazewindow.h"
 class MazeLabel : public QWidget
 {
     Q_OBJECT
@@ -15,12 +16,14 @@ public:
 signals:
 
 public slots:
+    void handleClicked();
 private:
     QHBoxLayout*  mainLayout;
     QVBoxLayout*  leftLayout;
     QPushButton*   m_PushButton;
     QRadioButton* m_Button1;
     QRadioButton* m_Button2;
+    MazeWindow * mazeWindow;
 };
 
 #endif // MAZELABLE_H

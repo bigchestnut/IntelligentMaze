@@ -52,7 +52,8 @@ SOURCES       = ..\IntelligentMaze\main.cpp \
 		..\IntelligentMaze\routelabel.cpp \
 		..\IntelligentMaze\comparelabel.cpp \
 		..\IntelligentMaze\mazewindow.cpp \
-		..\IntelligentMaze\infowindow.cpp release\moc_mainwindow.cpp \
+		..\IntelligentMaze\infowindow.cpp \
+		..\IntelligentMaze\maze.cpp release\moc_mainwindow.cpp \
 		release\moc_mainwindowcontainer.cpp \
 		release\moc_upwindowcontainer.cpp \
 		release\moc_downwindowcontainer.cpp \
@@ -71,6 +72,7 @@ OBJECTS       = release/main.o \
 		release/comparelabel.o \
 		release/mazewindow.o \
 		release/infowindow.o \
+		release/maze.o \
 		release/moc_mainwindow.o \
 		release/moc_mainwindowcontainer.o \
 		release/moc_upwindowcontainer.o \
@@ -89,7 +91,8 @@ DIST          =  ..\IntelligentMaze\mainwindow.h \
 		..\IntelligentMaze\routelabel.h \
 		..\IntelligentMaze\comparelabel.h \
 		..\IntelligentMaze\mazewindow.h \
-		..\IntelligentMaze\infowindow.h ..\IntelligentMaze\main.cpp \
+		..\IntelligentMaze\infowindow.h \
+		..\IntelligentMaze\maze.h ..\IntelligentMaze\main.cpp \
 		..\IntelligentMaze\mainwindow.cpp \
 		..\IntelligentMaze\mainwindowcontainer.cpp \
 		..\IntelligentMaze\upwindowcontainer.cpp \
@@ -98,7 +101,8 @@ DIST          =  ..\IntelligentMaze\mainwindow.h \
 		..\IntelligentMaze\routelabel.cpp \
 		..\IntelligentMaze\comparelabel.cpp \
 		..\IntelligentMaze\mazewindow.cpp \
-		..\IntelligentMaze\infowindow.cpp
+		..\IntelligentMaze\infowindow.cpp \
+		..\IntelligentMaze\maze.cpp
 QMAKE_TARGET  = IntelligentMaze
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = IntelligentMaze.exe
@@ -118,10 +122,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) IntelligentMaze.zip $(SOURCES) $(DIST) ..\IntelligentMaze\IntelligentMaze.pro ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf ..\IntelligentMaze\IntelligentMaze.pro ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\qtmain.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Widgets.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Gui.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Core.prl    ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp ..\IntelligentMaze\mainwindow.h ..\IntelligentMaze\mainwindowcontainer.h ..\IntelligentMaze\upwindowcontainer.h ..\IntelligentMaze\downwindowcontainer.h ..\IntelligentMaze\mazelabel.h ..\IntelligentMaze\routelabel.h ..\IntelligentMaze\comparelabel.h ..\IntelligentMaze\mazewindow.h ..\IntelligentMaze\infowindow.h ..\IntelligentMaze\main.cpp ..\IntelligentMaze\mainwindow.cpp ..\IntelligentMaze\mainwindowcontainer.cpp ..\IntelligentMaze\upwindowcontainer.cpp ..\IntelligentMaze\downwindowcontainer.cpp ..\IntelligentMaze\mazelabel.cpp ..\IntelligentMaze\routelabel.cpp ..\IntelligentMaze\comparelabel.cpp ..\IntelligentMaze\mazewindow.cpp ..\IntelligentMaze\infowindow.cpp     
+	$(ZIP) IntelligentMaze.zip $(SOURCES) $(DIST) ..\IntelligentMaze\IntelligentMaze.pro ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf ..\IntelligentMaze\IntelligentMaze.pro ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\qtmain.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Widgets.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Gui.prl ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Core.prl    ..\..\..\..\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp ..\IntelligentMaze\mainwindow.h ..\IntelligentMaze\mainwindowcontainer.h ..\IntelligentMaze\upwindowcontainer.h ..\IntelligentMaze\downwindowcontainer.h ..\IntelligentMaze\mazelabel.h ..\IntelligentMaze\routelabel.h ..\IntelligentMaze\comparelabel.h ..\IntelligentMaze\mazewindow.h ..\IntelligentMaze\infowindow.h ..\IntelligentMaze\maze.h ..\IntelligentMaze\main.cpp ..\IntelligentMaze\mainwindow.cpp ..\IntelligentMaze\mainwindowcontainer.cpp ..\IntelligentMaze\upwindowcontainer.cpp ..\IntelligentMaze\downwindowcontainer.cpp ..\IntelligentMaze\mazelabel.cpp ..\IntelligentMaze\routelabel.cpp ..\IntelligentMaze\comparelabel.cpp ..\IntelligentMaze\mazewindow.cpp ..\IntelligentMaze\infowindow.cpp ..\IntelligentMaze\maze.cpp     
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\mainwindow.o release\mainwindowcontainer.o release\upwindowcontainer.o release\downwindowcontainer.o release\mazelabel.o release\routelabel.o release\comparelabel.o release\mazewindow.o release\infowindow.o release\moc_mainwindow.o release\moc_mainwindowcontainer.o release\moc_upwindowcontainer.o release\moc_downwindowcontainer.o release\moc_mazelabel.o release\moc_routelabel.o release\moc_comparelabel.o release\moc_mazewindow.o release\moc_infowindow.o
+	-$(DEL_FILE) release\main.o release\mainwindow.o release\mainwindowcontainer.o release\upwindowcontainer.o release\downwindowcontainer.o release\mazelabel.o release\routelabel.o release\comparelabel.o release\mazewindow.o release\infowindow.o release\maze.o release\moc_mainwindow.o release\moc_mainwindowcontainer.o release\moc_upwindowcontainer.o release\moc_downwindowcontainer.o release\moc_mazelabel.o release\moc_routelabel.o release\moc_comparelabel.o release\moc_mazewindow.o release\moc_infowindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -262,14 +266,45 @@ release/moc_mainwindow.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidg
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		../IntelligentMaze/mazelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
 		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
 		../IntelligentMaze/mainwindow.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -383,18 +418,47 @@ release/moc_mainwindowcontainer.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/inclu
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		../IntelligentMaze/mazelabel.h \
-		../IntelligentMaze/routelabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
 		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
 		../IntelligentMaze/mainwindowcontainer.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -507,12 +571,17 @@ release/moc_upwindowcontainer.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/mazelabel.h \
-		../IntelligentMaze/routelabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -625,10 +694,39 @@ release/moc_downwindowcontainer.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/inclu
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
 		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -735,13 +833,25 @@ release/moc_mazelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidge
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/mazelabel.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
 	E:\Qt\Qt5.8.0\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IE:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++ -IE:/github/IntelligentMaze/src/IntelligentMaze -IE:/Qt/Qt5.8.0/5.8/mingw53_32/include -IE:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets -IE:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui -IE:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtANGLE -IE:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\IntelligentMaze\mazelabel.h -o release\moc_mazelabel.cpp
 
-release/moc_routelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+release/moc_routelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
@@ -768,7 +878,6 @@ release/moc_routelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidg
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
@@ -842,8 +951,18 @@ release/moc_routelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidg
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/routelabel.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -950,6 +1069,18 @@ release/moc_comparelabel.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWi
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/comparelabel.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -1061,9 +1192,26 @@ release/moc_mazewindow.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidg
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
 		../IntelligentMaze/mazewindow.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -1170,6 +1318,25 @@ release/moc_infowindow.cpp: ../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidg
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
 		../IntelligentMaze/infowindow.h \
 		release/moc_predefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -1305,14 +1472,45 @@ release/main.o: ../IntelligentMaze/main.cpp ../IntelligentMaze/mainwindow.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		../IntelligentMaze/mazelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
 		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -1436,14 +1634,45 @@ release/mainwindow.o: ../IntelligentMaze/mainwindow.cpp ../IntelligentMaze/mainw
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		../IntelligentMaze/mazelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../IntelligentMaze/infowindow.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\IntelligentMaze\mainwindow.cpp
 
 release/mainwindowcontainer.o: ../IntelligentMaze/mainwindowcontainer.cpp ../IntelligentMaze/mainwindowcontainer.h \
@@ -1555,18 +1784,47 @@ release/mainwindowcontainer.o: ../IntelligentMaze/mainwindowcontainer.cpp ../Int
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/upwindowcontainer.h \
 		../IntelligentMaze/mazelabel.h \
-		../IntelligentMaze/routelabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../IntelligentMaze/routelabel.h \
 		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
 		../IntelligentMaze/downwindowcontainer.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../IntelligentMaze/infowindow.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindowcontainer.o ..\IntelligentMaze\mainwindowcontainer.cpp
 
 release/upwindowcontainer.o: ../IntelligentMaze/upwindowcontainer.cpp ../IntelligentMaze/upwindowcontainer.h \
@@ -1677,12 +1935,17 @@ release/upwindowcontainer.o: ../IntelligentMaze/upwindowcontainer.cpp ../Intelli
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/mazelabel.h \
-		../IntelligentMaze/routelabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		../IntelligentMaze/comparelabel.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../IntelligentMaze/routelabel.h \
+		../IntelligentMaze/comparelabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\upwindowcontainer.o ..\IntelligentMaze\upwindowcontainer.cpp
 
 release/downwindowcontainer.o: ../IntelligentMaze/downwindowcontainer.cpp ../IntelligentMaze/downwindowcontainer.h \
@@ -1793,10 +2056,39 @@ release/downwindowcontainer.o: ../IntelligentMaze/downwindowcontainer.cpp ../Int
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		../IntelligentMaze/mazewindow.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../IntelligentMaze/infowindow.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../IntelligentMaze/infowindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\downwindowcontainer.o ..\IntelligentMaze\downwindowcontainer.cpp
 
 release/mazelabel.o: ../IntelligentMaze/mazelabel.cpp ../IntelligentMaze/mazelabel.h \
@@ -1900,12 +2192,24 @@ release/mazelabel.o: ../IntelligentMaze/mazelabel.cpp ../IntelligentMaze/mazelab
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfile.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mazelabel.o ..\IntelligentMaze\mazelabel.cpp
 
 release/routelabel.o: ../IntelligentMaze/routelabel.cpp ../IntelligentMaze/routelabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
@@ -1932,7 +2236,6 @@ release/routelabel.o: ../IntelligentMaze/routelabel.cpp ../IntelligentMaze/route
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
@@ -2006,8 +2309,18 @@ release/routelabel.o: ../IntelligentMaze/routelabel.cpp ../IntelligentMaze/route
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QRadioButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\routelabel.o ..\IntelligentMaze\routelabel.cpp
 
 release/comparelabel.o: ../IntelligentMaze/comparelabel.cpp ../IntelligentMaze/comparelabel.h \
@@ -2111,7 +2424,19 @@ release/comparelabel.o: ../IntelligentMaze/comparelabel.cpp ../IntelligentMaze/c
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfile.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\comparelabel.o ..\IntelligentMaze\comparelabel.cpp
 
 release/mazewindow.o: ../IntelligentMaze/mazewindow.cpp ../IntelligentMaze/mazewindow.h \
@@ -2221,9 +2546,28 @@ release/mazewindow.o: ../IntelligentMaze/mazewindow.cpp ../IntelligentMaze/mazew
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableWidget \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mazewindow.o ..\IntelligentMaze\mazewindow.cpp
 
 release/infowindow.o: ../IntelligentMaze/infowindow.cpp ../IntelligentMaze/infowindow.h \
@@ -2327,8 +2671,30 @@ release/infowindow.o: ../IntelligentMaze/infowindow.cpp ../IntelligentMaze/infow
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfile.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
-		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\infowindow.o ..\IntelligentMaze\infowindow.cpp
+
+release/maze.o: ../IntelligentMaze/maze.cpp ../IntelligentMaze/maze.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\maze.o ..\IntelligentMaze\maze.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_mainwindow.o release\moc_mainwindow.cpp

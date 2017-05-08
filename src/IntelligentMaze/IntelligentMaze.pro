@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     routelabel.cpp \
     comparelabel.cpp \
     mazewindow.cpp \
-    infowindow.cpp
+    infowindow.cpp \
+    maze.cpp
 
 HEADERS  += mainwindow.h \
     mainwindowcontainer.h \
@@ -42,6 +43,7 @@ HEADERS  += mainwindow.h \
     routelabel.h \
     comparelabel.h \
     mazewindow.h \
-    infowindow.h
+    infowindow.h \
+    maze.h
 
 FORMS    +=

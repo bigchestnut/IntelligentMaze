@@ -3,23 +3,27 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
-#include <QGraphicsView>
-#include <QPaintEvent>
-#include <QPainter>
+#include <QTableWidget>
+#include <maze.h>
+
 class MazeWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MazeWindow(QWidget *parent = 0);
-
+    static MazeWindow* getInstance();
 signals:
 
 public slots:
-
+        void createMaze();
 private:
-    void paintEvent();
+    explicit MazeWindow(QWidget *parent = 0);
     QHBoxLayout * mainLayout;
-    QGraphicsView * m_graphView;
+    QTableWidget* m_table;
+    Maze*     m_maze;
+    MyPoint ** m_mazeStruct;
+    int column;
+    int row;
+    void initMaze();
 };
 
 #endif // MAZEWINDOW_H

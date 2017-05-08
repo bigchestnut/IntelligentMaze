@@ -17,7 +17,7 @@ CompareLabel::CompareLabel(QWidget *parent) : QWidget(parent)
     leftLayout->addWidget(m_Button2);
     leftLayout->addWidget(m_Button3);
     leftLayout->addWidget(m_Button4);
-    mainLayout->addLayout(leftLayout, 2);
+    mainLayout->addLayout(leftLayout, 1);
     mainLayout->addWidget(m_PushButton,1);
     this->setLayout(mainLayout);
 }

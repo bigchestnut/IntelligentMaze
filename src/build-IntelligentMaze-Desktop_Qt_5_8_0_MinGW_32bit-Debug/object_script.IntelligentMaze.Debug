@@ -9,6 +9,7 @@ INPUT(
 ./debug\comparelabel.o
 ./debug\mazewindow.o
 ./debug\infowindow.o
+./debug\maze.o
 ./debug\moc_mainwindow.o
 ./debug\moc_mainwindowcontainer.o
 ./debug\moc_upwindowcontainer.o

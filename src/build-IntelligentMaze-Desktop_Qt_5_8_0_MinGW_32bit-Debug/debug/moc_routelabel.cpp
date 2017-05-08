@@ -63,7 +63,7 @@ void RouteLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 }
 
 const QMetaObject RouteLabel::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_RouteLabel.data,
+    { &QWidget::staticMetaObject, qt_meta_stringdata_RouteLabel.data,
       qt_meta_data_RouteLabel,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -78,12 +78,12 @@ void *RouteLabel::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_RouteLabel.stringdata0))
         return static_cast<void*>(const_cast< RouteLabel*>(this));
-    return QMainWindow::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int RouteLabel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     return _id;

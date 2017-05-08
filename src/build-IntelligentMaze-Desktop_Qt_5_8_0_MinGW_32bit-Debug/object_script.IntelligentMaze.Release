@@ -9,6 +9,7 @@ INPUT(
 ./release\comparelabel.o
 ./release\mazewindow.o
 ./release\infowindow.o
+./release\maze.o
 ./release\moc_mainwindow.o
 ./release\moc_mainwindowcontainer.o
 ./release\moc_upwindowcontainer.o
