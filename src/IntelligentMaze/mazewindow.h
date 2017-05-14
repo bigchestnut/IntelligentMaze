@@ -15,6 +15,10 @@ signals:
 
 public slots:
         void createMaze();
+        void setMazeCol(int col);
+        void setMazeRow(int r);
+        void setStartX(int x);
+        void setStartY(int y);
 private:
     explicit MazeWindow(QWidget *parent = 0);
     QHBoxLayout * mainLayout;
@@ -23,6 +27,10 @@ private:
     MyPoint ** m_mazeStruct;
     int column;
     int row;
+    int tempCol;
+    int tempRow;//刚设置的、没有生成的宽高
+    int startPosX;
+    int startPosY;
     void initMaze();
 };
 

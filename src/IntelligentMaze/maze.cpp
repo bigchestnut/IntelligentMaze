@@ -13,10 +13,12 @@ Maze::Maze()
 
 }
 
-Maze::Maze(int w, int h)
+Maze::Maze(int w, int h, int x, int y)
 {
     this->width = w;
     this->height = h;
+    startPosX = x;
+    startPosY = y;
     initMaze();
 }
 
@@ -39,7 +41,7 @@ void Maze::initMaze()
 
 void Maze::createMaze()
 {
-    int i=1,j=1;
+    int i=startPosY,j=startPosX;
     m_maze[i][j].state=true;
 
     MyPoint temp;

@@ -23,8 +23,15 @@ private:
 public:
     int width;
     int height;
+    int startPosX;
+    int startPosY;
     Maze();
-    Maze(int w, int h);
+    Maze(int w, int h, int x, int y);
+
+    void setWidth(int w){width = w;}
+    void setHeight(int h){height = h;}
+    void setStartX(int x){startPosX = x;}
+    void setStartY(int y){startPosY = y;}
     void initMaze();
     void createMaze();
     void resetMaze();
