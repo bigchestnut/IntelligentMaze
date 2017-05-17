@@ -3,6 +3,7 @@
 #include <mazewindow.h>
 #include <infowindow.h>
 #include <QQueue>
+#include <QList>
 void Maze::resetDir(bool &up, bool &down, bool &right, bool &left)
 {
     up = false;
@@ -14,12 +15,18 @@ void Maze::resetDir(bool &up, bool &down, bool &right, bool &left)
 
 void Maze::resetPath()
 {
+   mazeWindow->resetFind();
     for(int i=0; i < height ; i++)
     {
           for (int j=0; j<width; j++)
           {
                m_maze[i][j].visited = false;
+               m_maze[i][j].lastDir = 0;
+               m_maze[i][j].isPath = false;
                m_maze[i][j].lastPoint = NULL;
+               m_maze[i][j].h = -1;
+               m_maze[i][j].g = -1;
+               m_maze[i][j].openOrClose = 0;
           }
     }
 }
@@ -28,8 +35,6 @@ void Maze::findPathBFS()
 {
     if(m_maze == NULL)
         return;
-    ;
-    resetPath();
     mazeWindow->setFindPath(true);
     int i=1,j=1;
     QQueue<MyPoint*>* queue = new QQueue<MyPoint*>();
@@ -42,18 +47,39 @@ void Maze::findPathBFS()
         i = temp->i;
         j = temp->j;
         m_maze[i][j].visited = true;
+        mazeWindow->onFindStep(temp->lastDir,temp->i,temp->j);
         //判断终点
         if (i ==height-2 && j == width - 2 )
         {
             infoWindow->clearInfo();
-            mazeWindow->onFindStep(i,j);
             //设置路径
-            while(temp->lastPoint != NULL)
+            while(temp->lastDir != 0)
             {
                 infoWindow->addFindStep(temp->i,temp->j);
-                mazeWindow->onFindStep(temp->i,temp->j);
+                temp->isPath = true;
+                switch (temp->lastDir) {
+                case 1:
+                    m_maze[temp->i +1][temp->j].isPath = true;
+                    break;
+                case 2:
+                    m_maze[temp->i -1][temp->j].isPath = true;
+                    break;
+                case 3:
+                    m_maze[temp->i][temp->j +1 ].isPath = true;
+                    break;
+                case 4:
+                    m_maze[temp->i][temp->j - 1].isPath = true;
+                    break;
+                default:
+                    break;
+                }
+                mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
                 temp = temp->lastPoint;
             }
+            infoWindow->addFindStep(temp->i,temp->j);
+            temp->isPath = true;
+            mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
+            mazeWindow->clearNotPath();
             mazeWindow->setFindPath(false);
             return;
         }
@@ -61,28 +87,284 @@ void Maze::findPathBFS()
         //上
         if(i>2 && m_maze[i-1][j].state && m_maze[i-2][j].visited == false)
         {
+            m_maze[i-2][j].lastDir = 1;
             m_maze[i-2][j].lastPoint = temp;
             queue->append(&m_maze[i-2][j]);
         }
         //下
         if(i<height - 2 && m_maze[i+1][j].state && m_maze[i+2][j].visited == false)
         {
+            m_maze[i+2][j].lastDir = 2;
             m_maze[i+2][j].lastPoint = temp;
             queue->append(&m_maze[i+2][j]);
         }
         //左
         if(j >2 && m_maze[i][j-1].state && m_maze[i][j-2].visited == false)
         {
+            m_maze[i][j-2].lastDir = 3;
             m_maze[i][j-2].lastPoint = temp;
             queue->append(&m_maze[i][j-2]);
         }
         //右
         if(j < width -2 && m_maze[i][j+1].state && m_maze[i][j+2].visited == false)
         {
+            m_maze[i][j+2].lastDir = 4;
             m_maze[i][j+2].lastPoint = temp;
             queue->append(&m_maze[i][j+2]);
         }
     }
+    mazeWindow->setFindPath(false);
+}
+
+void Maze::findPathDFS()
+{
+    if(m_maze == NULL)
+        return;
+    mazeWindow->setFindPath(true);
+    int i=1,j=1;
+    QStack<MyPoint*>* stack = new QStack<MyPoint*>();
+    stack->append(&m_maze[i][j]);
+
+    while(!stack->empty())
+    {
+        MyPoint* temp = stack->top();
+        i = temp->i;
+        j = temp->j;
+        if(!m_maze[i][j].visited)
+        {
+            m_maze[i][j].visited = true;
+            mazeWindow->onFindStep(temp->lastDir,temp->i,temp->j);
+        }
+        //判断终点
+        if (i ==height-2 && j == width - 2 )
+        {
+            infoWindow->clearInfo();
+            //设置路径
+            while(temp->lastDir != 0)
+            {
+                infoWindow->addFindStep(temp->i,temp->j);
+                temp->isPath = true;
+                switch (temp->lastDir) {
+                case 1:
+                    m_maze[temp->i +1][temp->j].isPath = true;
+                    break;
+                case 2:
+                    m_maze[temp->i -1][temp->j].isPath = true;
+                    break;
+                case 3:
+                    m_maze[temp->i][temp->j +1 ].isPath = true;
+                    break;
+                case 4:
+                    m_maze[temp->i][temp->j - 1].isPath = true;
+                    break;
+                default:
+                    break;
+                }
+                mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
+                temp = temp->lastPoint;
+            }
+            infoWindow->addFindStep(temp->i,temp->j);
+            temp->isPath = true;
+            mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
+            mazeWindow->clearNotPath();
+            mazeWindow->setFindPath(false);
+            return;
+        }
+
+        //上
+        if(i>2 && m_maze[i-1][j].state && m_maze[i-2][j].visited == false)
+        {
+            m_maze[i-2][j].lastDir = 1;
+            m_maze[i-2][j].lastPoint = temp;
+            stack->append(&m_maze[i-2][j]);
+            continue;
+        }
+        //下
+        if(i<height - 2 && m_maze[i+1][j].state && m_maze[i+2][j].visited == false)
+        {
+            m_maze[i+2][j].lastDir = 2;
+            m_maze[i+2][j].lastPoint = temp;
+            stack->append(&m_maze[i+2][j]);
+            continue;
+        }
+        //左
+        if(j >2 && m_maze[i][j-1].state && m_maze[i][j-2].visited == false)
+        {
+            m_maze[i][j-2].lastDir = 3;
+            m_maze[i][j-2].lastPoint = temp;
+            stack->append(&m_maze[i][j-2]);
+            continue;
+        }
+        //右
+        if(j < width -2 && m_maze[i][j+1].state && m_maze[i][j+2].visited == false)
+        {
+            m_maze[i][j+2].lastDir = 4;
+            m_maze[i][j+2].lastPoint = temp;
+            stack->append(&m_maze[i][j+2]);
+            continue;
+        }
+        stack->pop();
+    }
+    mazeWindow->setFindPath(false);
+}
+
+void Maze::findPathAStar()
+{
+    if(m_maze == NULL)
+        return;
+    mazeWindow->setFindPath(true);
+    QList<MyPoint>* openList = new QList<MyPoint>();
+    int i=1,j=1;
+    m_maze[i][j].g = 0;
+    m_maze[i][j].h = getHValue(i,j);
+    m_maze[i][j].openOrClose = 1;
+    openList->append(m_maze[i][j]);
+    while (!openList->empty())
+    {
+        qSort(openList->begin(),openList->end());
+        MyPoint temp = openList->first();
+        openList->removeFirst();
+        i = temp.i;
+        j = temp.j;
+        if (i == height -2 && j == width -2)
+        {
+            infoWindow->clearInfo();
+            //设置路径
+            while(temp.lastDir != 0)
+            {
+                infoWindow->addFindStep(temp.i,temp.j);
+                m_maze[temp.i][temp.j].isPath = true;
+                switch (temp.lastDir) {
+                case 1:
+                    m_maze[temp.i +1][temp.j].isPath = true;
+                    break;
+                case 2:
+                    m_maze[temp.i -1][temp.j].isPath = true;
+                    break;
+                case 3:
+                    m_maze[temp.i][temp.j +1 ].isPath = true;
+                    break;
+                case 4:
+                    m_maze[temp.i][temp.j - 1].isPath = true;
+                    break;
+                default:
+                    break;
+                }
+                mazeWindow->onFindStepBack(temp.lastDir,temp.i,temp.j);
+                temp = *temp.lastPoint;
+            }
+            infoWindow->addFindStep(temp.i,temp.j);
+            m_maze[temp.i][temp.j].isPath = true;
+            mazeWindow->onFindStepBack(temp.lastDir,temp.i,temp.j);
+            mazeWindow->clearNotPath();
+            mazeWindow->setFindPath(false);
+            return;
+        }
+        m_maze[i][j].openOrClose = 2;
+        //上
+        if(i>2 && m_maze[i-1][j].state&&m_maze[i-2][j].openOrClose !=2)
+        {
+            if (m_maze[i-2][j].openOrClose == 0)
+            {
+                m_maze[i-2][j].lastDir = 1;
+                m_maze[i-2][j].lastPoint = &m_maze[i][j];
+                m_maze[i-2][j].g = m_maze[i][j].g +1;
+                m_maze[i-2][j].h = getHValue(i-2,j);
+                m_maze[i-2][j].openOrClose = 1;
+                openList->append(m_maze[i-2][j]);
+            }
+            else if (m_maze[i-2][j].openOrClose == 1)
+            {
+                int tempG = m_maze[i][j].g +1;
+                if (tempG< m_maze[i-2][j].g)
+                {
+                    m_maze[i-2][j].g = tempG;
+                    m_maze[i-2][j].lastDir = 1;
+                    m_maze[i-2][j].lastPoint = &m_maze[i][j];
+                }
+            }
+        }
+        //下
+        if(i < height -2 && m_maze[i+1][j].state&&m_maze[i+2][j].openOrClose !=2)
+        {
+            if (m_maze[i+2][j].openOrClose == 0)
+            {
+                m_maze[i+2][j].lastDir = 2;
+                m_maze[i+2][j].lastPoint = &m_maze[i][j];
+                m_maze[i+2][j].g = m_maze[i][j].g +1;
+                m_maze[i+2][j].h = getHValue(i+2,j);
+                m_maze[i+2][j].openOrClose = 1;
+                openList->append(m_maze[i+2][j]);
+            }
+            else if (m_maze[i+2][j].openOrClose == 1)
+            {
+                int tempG = m_maze[i][j].g +1;
+                if (tempG< m_maze[i+2][j].g)
+                {
+                    m_maze[i+2][j].g = tempG;
+                    m_maze[i+2][j].lastDir = 2;
+                    m_maze[i+2][j].lastPoint = &m_maze[i][j];
+                }
+            }
+        }
+        //左
+        if(j > 2 && m_maze[i][j-1].state&&m_maze[i][j-2].openOrClose !=2)
+        {
+            if (m_maze[i][j-2].openOrClose == 0)
+            {
+                m_maze[i][j-2].lastDir = 3;
+                m_maze[i][j-2].lastPoint = &m_maze[i][j];
+                m_maze[i][j-2].g = m_maze[i][j].g +1;
+                m_maze[i][j-2].h = getHValue(i,j-2);
+                m_maze[i][j-2].openOrClose = 1;
+                openList->append(m_maze[i][j-2]);
+            }
+            else if (m_maze[i][j-2].openOrClose == 1)
+            {
+                int tempG = m_maze[i][j].g +1;
+                if (tempG< m_maze[i][j-2].g)
+                {
+                    m_maze[i][j-2].g = tempG;
+                    m_maze[i][j-2].lastDir = 3;
+                    m_maze[i][j-2].lastPoint = &m_maze[i][j];
+                }
+            }
+        }
+        //右
+        if(j < width -2  && m_maze[i][j+1].state&&m_maze[i][j+2].openOrClose !=2)
+        {
+            if (m_maze[i][j+2].openOrClose == 0)
+            {
+                m_maze[i][j+2].lastDir = 4;
+                m_maze[i][j+2].lastPoint = &m_maze[i][j];
+                m_maze[i][j+2].g = m_maze[i][j].g +1;
+                m_maze[i][j+2].h = getHValue(i,j+2);
+                m_maze[i][j+2].openOrClose = 1;
+                openList->append(m_maze[i][j+2]);
+            }
+            else if (m_maze[i][j+2].openOrClose == 1)
+            {
+                int tempG = m_maze[i][j].g +1;
+                if (tempG< m_maze[i][j+2].g)
+                {
+                    m_maze[i][j+2].g = tempG;
+                    m_maze[i][j+2].lastDir = 4;
+                    m_maze[i][j+2].lastPoint = &m_maze[i][j];
+                }
+            }
+        }
+    }
+    mazeWindow->setFindPath(false);
+}
+
+int Maze::getHValue(int i, int j)
+{
+    return abs(i -height + 2)+abs(j-width +2);
+}
+
+void Maze::findPathInherit()
+{
+
 }
 
 Maze::Maze()
@@ -101,6 +383,11 @@ Maze::Maze(int w, int h, int x, int y)
     initMaze();
 }
 
+Maze::~Maze()
+{
+    delete [] m_maze;
+}
+
 void Maze::initMaze()
 {
     m_maze =new MyPoint*[height];
@@ -112,6 +399,13 @@ void Maze::initMaze()
                m_maze[i][j].i = i;
                m_maze[i][j].j = j;
                m_maze[i][j].state = false;
+              m_maze[i][j].visited = false;
+              m_maze[i][j].isPath = false;
+              m_maze[i][j].lastPoint = NULL;
+              m_maze[i][j].lastDir = 0;
+              m_maze[i][j].h = -1;
+              m_maze[i][j].g = -1;
+              m_maze[i][j].openOrClose = 0;
           }
     }
     m_mazeStack = new QStack<MyPoint>();
@@ -251,18 +545,19 @@ void Maze::resetMaze()
 
 void Maze::findPath(int i)
 {
+    resetPath();
     switch (i) {
     case 1:
         findPathBFS();
         break;
     case 2:
-        findPathBFS();
+        findPathDFS();
         break;
     case 3:
-        findPathBFS();
+        findPathAStar();
         break;
     case 4:
-        findPathBFS();
+        findPathInherit();
         break;
     default:
         findPathBFS();
@@ -275,11 +570,22 @@ MyPoint::MyPoint()
      this->lastPoint = NULL;
 }
 
-MyPoint::MyPoint(int i, int j, bool state, bool visited)
+MyPoint::MyPoint(int i, int j, bool state, bool visited, bool isPath)
 {
     this->i = i;
     this->j = j;
     this->state = state;
     this->visited = visited;
+    this->isPath = isPath;
     this->lastPoint = NULL;
+    this->lastDir = 0;
+    this->h = -1;
+    this->g = -1;
+    this->openOrClose = 0;
 }
+
+bool MyPoint::operator<(const MyPoint &n) const
+{
+    return (g +h) < (n.g+n.h);
+}
+

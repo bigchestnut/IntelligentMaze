@@ -26,9 +26,8 @@ private:
     QVBoxLayout* mainLayout;
     QTextBrowser* m_textBro1;
     QTextBrowser* m_textBro2;
-    QScrollArea* m_scrollArea;
     QTextEdit* m_textEdit;
-    QPushButton* m_switchBtn;
+    //QPushButton* m_switchBtn;
 };
 
 #endif // INFOWINDOW_H

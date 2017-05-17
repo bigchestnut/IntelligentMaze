@@ -4,8 +4,9 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QCheckBox>
-#include <QPushButton>
+#include <QLabel>
+#include <QSlider>
+#include <mazewindow.h>
 class CompareLabel : public QWidget
 {
     Q_OBJECT
@@ -16,13 +17,14 @@ signals:
 
 public slots:
 private:
-    QHBoxLayout*  mainLayout;
-    QVBoxLayout*  leftLayout;
-    QPushButton*   m_PushButton;
-    QCheckBox* m_Button1;
-    QCheckBox* m_Button2;
-    QCheckBox* m_Button3;
-    QCheckBox* m_Button4;
+    QVBoxLayout*  mainLayout;
+    QHBoxLayout* m_sliderLayout;
+    QLabel* m_sliderLabel;
+    QLabel* m_slowLabel;
+    QLabel* m_fastLabel;
+    QSlider* m_slider;
+
+    MazeWindow * mazeWindow;
 };
 
 #endif // COMPARELABEL_H

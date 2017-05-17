@@ -3,7 +3,6 @@
 MazeLabel::MazeLabel(QWidget *parent) : QWidget(parent)
   ,mainLayout(new QHBoxLayout())
   ,leftLayout(new QVBoxLayout())
-  ,rightLayout(new QVBoxLayout())
   ,m_widthLayout(new QHBoxLayout())
   ,m_heightLayout(new QHBoxLayout())
   ,m_startPosXLayout(new QHBoxLayout())
@@ -16,9 +15,6 @@ MazeLabel::MazeLabel(QWidget *parent) : QWidget(parent)
   ,m_heightBox(new QSpinBox())
   ,m_startPosXBox(new QSpinBox())
   ,m_startPosYBox(new QSpinBox())
-  ,m_sliderLayout(new QHBoxLayout())
-  ,m_sliderLabel(new QLabel(tr("生成速度:")))
-  ,m_slider(new QSlider())
   ,m_PushButton(new QPushButton(tr("生成迷宫")))
 {
     mazeWindow = MazeWindow::getInstance();
@@ -52,21 +48,16 @@ MazeLabel::MazeLabel(QWidget *parent) : QWidget(parent)
     leftLayout->addLayout(m_startPosYLayout);
 
     //右侧
-    rightLayout->addLayout(m_sliderLayout);
-    rightLayout->addWidget(m_PushButton);
-    m_sliderLayout->addWidget(m_sliderLabel);
-    m_sliderLayout->addWidget(m_slider);
-    m_slider->setRange(10,600);
-    m_slider->setValue(50);
-    mainLayout->addLayout(leftLayout);
-    mainLayout->addLayout(rightLayout);
+    mainLayout->addLayout(leftLayout,2);
+    mainLayout->addStretch(1);
+    mainLayout->addWidget(m_PushButton,2);
+    mainLayout->addStretch(1);
     //信号槽
     connect(m_PushButton,SIGNAL(clicked()), mazeWindow , SLOT(createMaze()));
     connect(m_widthBox,SIGNAL(valueChanged(int )),this,SLOT(handleWidthBox(int )));
     connect(m_heightBox,SIGNAL(valueChanged(int )),this,SLOT(handleHeightBox(int )));
     connect(m_startPosXBox,SIGNAL(valueChanged(int )),mazeWindow,SLOT(setStartX(int)));
     connect(m_startPosYBox,SIGNAL(valueChanged(int )),mazeWindow,SLOT(setStartY(int )));
-    connect(m_slider, SIGNAL(valueChanged(int)),mazeWindow, SLOT(setStepTime(int)));
     this->setLayout(mainLayout);
 }
 

@@ -8,7 +8,6 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QSpinBox>
-#include <QSlider>
 #include "mazewindow.h"
 
 class MazeLabel : public QWidget
@@ -29,7 +28,6 @@ private:
     QHBoxLayout*  m_startPosXLayout;
     QHBoxLayout*  m_startPosYLayout;
     QVBoxLayout*  leftLayout;
-    QVBoxLayout* rightLayout;
     QPushButton*   m_PushButton;
     QSpinBox* m_widthBox;
     QSpinBox* m_heightBox;
@@ -39,9 +37,6 @@ private:
     QLabel* m_heightLabel;
     QLabel* m_startPosX;
     QLabel* m_startPosY;
-    QHBoxLayout* m_sliderLayout;
-    QLabel* m_sliderLabel;
-    QSlider* m_slider;
 //    QRadioButton* m_Button1;
 //    QRadioButton* m_Button2;
     MazeWindow * mazeWindow;

@@ -17,8 +17,11 @@ public:
     void setIsOncreating(bool b);
     void setIsCreated(bool b);
     //寻路相关
-    void onFindStep(int i, int j);
+    void onFindStepBack(int dir, int i, int j);
+    void onFindStep(int dir,int i,int j);
     void onFindReturn(int i,int j);
+    void resetFind();
+    void clearNotPath();
 signals:
 
 public slots:

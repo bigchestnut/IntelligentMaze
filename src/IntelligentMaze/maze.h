@@ -10,12 +10,18 @@ public:
     int j;
     bool state;
     bool visited;
+    bool isPath;
+    //A*的评估值
+    int h;
+    int g;
+    int openOrClose;//0 都不在 1 open 2 close
+    int lastDir;//0 无效 1 2 3 4  上下左右
     MyPoint *lastPoint;
 
     MyPoint();
-    MyPoint(int i,int j, bool state = false, bool visited = false);
-
+    MyPoint(int i, int j, bool state = false, bool visited = false, bool isPath = false);
     bool operator==(const MyPoint& maze);
+    bool operator<(const MyPoint& n) const;
 };
 class Maze
 {
@@ -31,7 +37,10 @@ private:
     int algoIndex;
     void resetPath();
     void findPathBFS();
-
+    void findPathDFS();
+    void findPathAStar();
+    int getHValue(int i,int j);
+    void findPathInherit();
 public:
     int width;
     int height;
@@ -39,7 +48,7 @@ public:
     int startPosY;
     Maze();
     Maze(int w, int h, int x, int y);
-
+    ~Maze();
     void setWidth(int w){width = w;}
     void setHeight(int h){height = h;}
     void setStartX(int x){startPosX = x;}
@@ -48,7 +57,7 @@ public:
     void createMaze();
     void resetMaze();
     void findPath(int i);
-   MyPoint ** getMaze(){return m_maze;}
+   MyPoint **getMaze(){return m_maze;}
 };
 
 #endif // MAZE_H

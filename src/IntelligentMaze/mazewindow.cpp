@@ -104,7 +104,7 @@ void MazeWindow::setIsCreated(bool b)
     m_isCreatMaze = b;
 }
 
-void MazeWindow::onFindStep(int i, int j)
+void MazeWindow::onFindStepBack(int dir,int i, int j)
 {
     QTableWidgetItem * item =  m_table->item(i, j);
     if (item !=NULL)
@@ -114,11 +114,200 @@ void MazeWindow::onFindStep(int i, int j)
     t.start();
     while(t.elapsed()< m_stepTime)
         QCoreApplication::processEvents();
+
+    int ii = i,jj= j;
+    switch (dir) {
+    case 0:
+        return;
+        break;
+    case 1:
+        ii +=1;
+        break;
+    case 2:
+        ii -=1;
+        break;
+    case 3:
+       jj += 1;
+        break;
+    case 4:
+       jj -=1;
+        break;
+    default:
+        break;
+    }
+    QTableWidgetItem * item0 =  m_table->item(ii, jj);
+    if (item0 !=NULL)
+        item0->setBackgroundColor(QColor(0,255,0));
+    //暂停100ms
+    QTime t0;
+    t0.start();
+    while(t0.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+//    MyPoint** temp = m_maze->getMaze();
+//    if(temp == NULL)
+//        return;
+//    //上
+//    if(i>2 && temp[i-1][j].state && temp[i-2][j].visited)
+//    {
+//        QTableWidgetItem * item1 =  m_table->item(i-1, j);
+//        if (item1 !=NULL)
+//            item1->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t1;
+//        t1.start();
+//        while(t1.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//        QTableWidgetItem * item11 =  m_table->item(i-2, j);
+//        if (item11 !=NULL)
+//            item11->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t11;
+//        t11.start();
+//        while(t11.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//    }
+//    //下
+//    if(i<row - 2 && temp[i+1][j].state && temp[i+2][j].visited)
+//    {
+//        QTableWidgetItem * item1 =  m_table->item(i+1, j);
+//        if (item1 !=NULL)
+//            item1->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t1;
+//        t1.start();
+//        while(t1.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//        QTableWidgetItem * item11 =  m_table->item(i+2, j);
+//        if (item11 !=NULL)
+//            item11->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t11;
+//        t11.start();
+//        while(t11.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//    }
+//    //左
+//    if(j >2 && temp[i][j-1].state && temp[i][j-2].visited )
+//    {
+//        QTableWidgetItem * item1 =  m_table->item(i, j-1);
+//        if (item1 !=NULL)
+//            item1->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t1;
+//        t1.start();
+//        while(t1.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//        QTableWidgetItem * item11 =  m_table->item(i, j-2);
+//        if (item11 !=NULL)
+//            item11->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t11;
+//        t11.start();
+//        while(t11.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//    }
+//    //右
+//    if(j < column -2 && temp[i][j+1].state && temp[i][j+2].visited)
+//    {
+//        QTableWidgetItem * item1 =  m_table->item(i, j+1);
+//        if (item1 !=NULL)
+//            item1->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t1;
+//        t1.start();
+//        while(t1.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//        QTableWidgetItem * item11 =  m_table->item(i, j+2);
+//        if (item11 !=NULL)
+//            item11->setBackgroundColor(QColor(255,255,255));
+//        //暂停100ms
+//        QTime t11;
+//        t11.start();
+//        while(t11.elapsed()< m_stepTime)
+//            QCoreApplication::processEvents();
+//    }
+}
+
+void MazeWindow::onFindStep(int dir,int i, int j)
+{
+    int ii = i,jj= j;
+    switch (dir) {
+    case 1:
+        ii +=1;
+        break;
+    case 2:
+        ii -=1;
+        break;
+    case 3:
+       jj += 1;
+        break;
+    case 4:
+       jj -=1;
+        break;
+    default:
+        break;
+    }
+    QTableWidgetItem * item1 =  m_table->item(ii, jj);
+    if (item1 !=NULL)
+        item1->setBackgroundColor(QColor(255,255,0));
+    if (dir == 0)
+        return;
+    //暂停100ms
+    QTime t1;
+    t1.start();
+    while(t1.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+
+    QTableWidgetItem * item =  m_table->item(i, j);
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,255,0));
+    //暂停100ms
+    QTime t;
+    t.start();
+    while(t.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+
 }
 
 void MazeWindow::onFindReturn(int i, int j)
 {
 
+}
+
+void MazeWindow::resetFind()
+{
+    MyPoint **m_temp = m_maze->getMaze();
+    //重置寻路结果
+    for (int i = 0; i < row;i++ )
+    {
+        for(int j = 0; j< column;j++)
+        {
+            QTableWidgetItem * item =  m_table->item(i, j);
+            if (item == NULL)
+                continue;
+            if(m_temp[i][j].state )
+                item->setBackgroundColor(QColor(255,255,255));
+        }
+    }
+}
+
+void MazeWindow::clearNotPath()
+{
+    MyPoint **m_temp = m_maze->getMaze();
+    //清除非路径
+    for (int i = 0; i < row;i++ )
+    {
+        for(int j = 0; j< column;j++)
+        {
+            QTableWidgetItem * item =  m_table->item(i, j);
+            if (item == NULL)
+                continue;
+            if(m_temp[i][j].state && m_temp[i][j].isPath == false )
+            {
+                item->setBackgroundColor(QColor(255,255,255));
+            }
+        }
+    }
 }
 
 
@@ -149,9 +338,6 @@ void MazeWindow::createMaze()
     m_maze = new Maze(column, row,startPosX,startPosY);
     m_maze->resetMaze();
     m_maze->createMaze();
-    MyPoint** temp = m_maze->getMaze();
-    if(temp == NULL)
-        return;
 }
 
 void MazeWindow::setMazeCol(int col)
