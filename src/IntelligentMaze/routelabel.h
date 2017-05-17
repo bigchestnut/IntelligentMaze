@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QRadioButton>
 #include <QPushButton>
+#include "mazewindow.h"
 class RouteLabel : public QWidget
 {
     Q_OBJECT
@@ -15,6 +16,8 @@ public:
 signals:
 
 public slots:
+private slots:
+    void findPath();
 private:
     QHBoxLayout*  mainLayout;
     QVBoxLayout*  leftLayout;
@@ -23,6 +26,7 @@ private:
     QRadioButton* m_Button2;
     QRadioButton* m_Button3;
     QRadioButton* m_Button4;
+    MazeWindow* mazeWindow;
 };
 
 #endif // ROUTELABEL_H

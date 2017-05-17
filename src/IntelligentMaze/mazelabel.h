@@ -39,6 +39,9 @@ private:
     QLabel* m_heightLabel;
     QLabel* m_startPosX;
     QLabel* m_startPosY;
+    QHBoxLayout* m_sliderLayout;
+    QLabel* m_sliderLabel;
+    QSlider* m_slider;
 //    QRadioButton* m_Button1;
 //    QRadioButton* m_Button2;
     MazeWindow * mazeWindow;

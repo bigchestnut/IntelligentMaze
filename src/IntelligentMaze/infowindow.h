@@ -5,19 +5,29 @@
 #include <QVBoxLayout>
 #include <QTextBrowser>
 #include <QPushButton>
+#include <QTextEdit>
+#include <QScrollArea>
 class InfoWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit InfoWindow(QWidget *parent = 0);
-
+    static InfoWindow* getInstance();
+    void addMazeStep(int level, int dir, int i, int j);//dir方向
+    void mazeReturn(int level, int i, int j);
+    void mazeEnd();
+    void clearInfo();
+    //寻路相关
+    void addFindStep(int i,int j);
 signals:
 
 public slots:
 private:
+    explicit InfoWindow(QWidget *parent = 0);
     QVBoxLayout* mainLayout;
     QTextBrowser* m_textBro1;
     QTextBrowser* m_textBro2;
+    QScrollArea* m_scrollArea;
+    QTextEdit* m_textEdit;
     QPushButton* m_switchBtn;
 };
 

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MazeWindow_t {
-    QByteArrayData data[11];
-    char stringdata0[75];
+    QByteArrayData data[17];
+    char stringdata0[114];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,11 +41,19 @@ QT_MOC_LITERAL(6, 49, 1), // "r"
 QT_MOC_LITERAL(7, 51, 9), // "setStartX"
 QT_MOC_LITERAL(8, 61, 1), // "x"
 QT_MOC_LITERAL(9, 63, 9), // "setStartY"
-QT_MOC_LITERAL(10, 73, 1) // "y"
+QT_MOC_LITERAL(10, 73, 1), // "y"
+QT_MOC_LITERAL(11, 75, 11), // "setStepTime"
+QT_MOC_LITERAL(12, 87, 1), // "t"
+QT_MOC_LITERAL(13, 89, 8), // "findPath"
+QT_MOC_LITERAL(14, 98, 1), // "i"
+QT_MOC_LITERAL(15, 100, 11), // "setFindPath"
+QT_MOC_LITERAL(16, 112, 1) // "b"
 
     },
     "MazeWindow\0createMaze\0\0setMazeCol\0col\0"
-    "setMazeRow\0r\0setStartX\0x\0setStartY\0y"
+    "setMazeRow\0r\0setStartX\0x\0setStartY\0y\0"
+    "setStepTime\0t\0findPath\0i\0setFindPath\0"
+    "b"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,7 +63,7 @@ static const uint qt_meta_data_MazeWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,11 +71,14 @@ static const uint qt_meta_data_MazeWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x0a /* Public */,
-       3,    1,   40,    2, 0x0a /* Public */,
-       5,    1,   43,    2, 0x0a /* Public */,
-       7,    1,   46,    2, 0x0a /* Public */,
-       9,    1,   49,    2, 0x0a /* Public */,
+       1,    0,   54,    2, 0x0a /* Public */,
+       3,    1,   55,    2, 0x0a /* Public */,
+       5,    1,   58,    2, 0x0a /* Public */,
+       7,    1,   61,    2, 0x0a /* Public */,
+       9,    1,   64,    2, 0x0a /* Public */,
+      11,    1,   67,    2, 0x0a /* Public */,
+      13,    1,   70,    2, 0x0a /* Public */,
+      15,    1,   73,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -75,6 +86,9 @@ static const uint qt_meta_data_MazeWindow[] = {
     QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   12,
+    QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void, QMetaType::Bool,   16,
 
        0        // eod
 };
@@ -90,6 +104,9 @@ void MazeWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->setMazeRow((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->setStartX((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->setStartY((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->setStepTime((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->findPath((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->setFindPath((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -120,13 +137,13 @@ int MazeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 8;
     }
     return _id;
 }

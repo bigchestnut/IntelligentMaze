@@ -1,10 +1,29 @@
 #include "mazewindow.h"
 #include <QHeaderView>
+#include <QTime>
+#include <QCoreApplication>
+#include <QMessageBox>
 MazeWindow::MazeWindow(QWidget *parent) : QWidget(parent)
    ,mainLayout(new QHBoxLayout(this))
+   ,m_label(new QLabel())
 {
+    QFont ft;
+    ft.setPointSize(25);
+    m_label->setAlignment(Qt::AlignCenter);
+    m_label->setFont(ft);
+    m_label->setText("欢迎使用智能迷宫系统！");
+    mainLayout->addWidget(m_label);
     this->setLayout(mainLayout);
-    //initMaze();
+    this->tempCol = 25;
+    this->tempRow = 13;
+    this->startPosX = 1;
+    this->startPosY = 1;
+    this->m_stepTime = 50;
+    this->m_isCreating = false;
+    this->m_isCreatMaze = false;
+    this->m_isFindingPath = false;
+    this->m_table = NULL;
+    this->m_maze = NULL;
 }
 
 MazeWindow *MazeWindow::getInstance()
@@ -15,8 +34,112 @@ MazeWindow *MazeWindow::getInstance()
     return m_instance;
 }
 
+void MazeWindow::onStep(int i, int j)
+{
+    if (m_table == NULL)
+        return;
+    QTableWidgetItem * item =  m_table->item(i, j);
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(0,255,0));
+    //暂停100ms
+    QTime t;
+    t.start();
+    while(t.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,255,255));
+}
+
+void MazeWindow::onReturn(int dir,int i, int j)
+{
+    int ii=i,jj=j;
+    switch (dir) {
+    case 0:
+        ii -=1;
+        break;
+    case 1:
+        ii +=1;
+        break;
+    case 2:
+        jj -=1;
+        break;
+    case 3:
+        jj +=1;
+        break;
+    default:
+        break;
+    }
+    if (m_table == NULL)
+        return;
+    QTableWidgetItem * item =  m_table->item(ii, jj);
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,0,0));
+    //暂停
+    QTime t;
+    t.start();
+    while(t.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,255,255));
+    item =  m_table->item(i, j);
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,0,0));
+    //暂停
+    QTime t1;
+    t1.start();
+    while(t1.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(255,255,255));
+
+}
+
+void MazeWindow::setIsOncreating(bool b)
+{
+    m_isCreating = b;
+}
+
+void MazeWindow::setIsCreated(bool b)
+{
+    m_isCreatMaze = b;
+}
+
+void MazeWindow::onFindStep(int i, int j)
+{
+    QTableWidgetItem * item =  m_table->item(i, j);
+    if (item !=NULL)
+        item->setBackgroundColor(QColor(0,255,0));
+    //暂停100ms
+    QTime t;
+    t.start();
+    while(t.elapsed()< m_stepTime)
+        QCoreApplication::processEvents();
+}
+
+void MazeWindow::onFindReturn(int i, int j)
+{
+
+}
+
+
+
 void MazeWindow::createMaze()
 {
+    if (m_isCreating)
+    {
+        QMessageBox::information(this, tr("警告"),tr("正在生成迷宫中，请稍后再试！"));
+        return;
+    }
+    if (m_isFindingPath)
+    {
+        QMessageBox::information(this, tr("警告"),tr("正在自动寻路中，请稍后再试！"));
+        return;
+    }
+    if(m_label)
+    {
+        mainLayout->removeWidget(m_label);
+        m_label = NULL;
+    }
     initMaze();
     if (m_maze != NULL)
     {
@@ -29,69 +152,86 @@ void MazeWindow::createMaze()
     MyPoint** temp = m_maze->getMaze();
     if(temp == NULL)
         return;
-    for (int i = 0; i < row;i++ )
-    {
-        for(int j = 0; j< column;j++)
-        {
-            if(temp[i][j].state == true)
-            {
-               QTableWidgetItem * item =  m_table->item(i, j);
-               if (item == NULL)
-                   continue;
-               item->setBackgroundColor(QColor(255,255,255));
-            }
-        }
-    }
 }
 
 void MazeWindow::setMazeCol(int col)
 {
-    this->column = col;
-    if (m_maze !=NULL)
-        m_maze->setWidth(col);
+    this->tempCol = col;
 }
 
 void MazeWindow::setMazeRow(int r)
 {
-    this->row = r;
-    if (m_maze !=NULL)
-        m_maze->setHeight(r);
+    this->tempRow = r;
 }
 
 void MazeWindow::setStartX(int x)
 {
     this->startPosX = x;
-    if(m_maze != NULL)
-        m_maze->setStartX(x);
 }
 
 void MazeWindow::setStartY(int y)
 {
     this->startPosY = y;
-    if(m_maze != NULL)
-        m_maze->setStartY(y);
+}
+
+void MazeWindow::setStepTime(int t)
+{
+    this->m_stepTime = t;
+}
+
+void MazeWindow::findPath(int i)
+{
+    if(m_isCreating)
+    {
+        QMessageBox::information(this, tr("警告"),tr("请耐心等待迷宫生成完毕！"));
+        return;
+    }
+    if (m_isCreatMaze ==false)
+    {
+        QMessageBox::information(this, tr("警告"),tr("请先生成迷宫！"));
+        return;
+    }
+    if (m_isFindingPath)
+    {
+        QMessageBox::information(this, tr("警告"),tr("正在自动寻路中，请稍后再试！"));
+        return;
+    }
+    m_maze->findPath(i);
+}
+
+void MazeWindow::setFindPath(bool b)
+{
+    m_isFindingPath = b;
 }
 
 void MazeWindow::initMaze()
 {
     if (m_table != NULL)
     {
+        //删除上一次表格
+        for (int i = 0; i < row;i++ )
+        {
+            for(int j = 0; j< column;j++)
+            {
+                m_table->removeCellWidget(i,j);
+            }
+        }
         mainLayout->removeWidget(m_table);
-        delete m_table;
         m_table = NULL;
     }
-    column = 25;
-    row = 13;
-    startPosX = 1;
-    startPosY = 1;
+    column = tempCol;
+    row = tempRow;
     m_table = new QTableWidget(row, column);
-    m_maze = new Maze(column, row,startPosX,startPosY);
     //初始化表格
     for (int i = 0; i < row;i++ )
     {
         for(int j = 0; j< column;j++)
         {
             m_table->setItem(i, j, new QTableWidgetItem());
+            QTableWidgetItem * item =  m_table->item(i, j);
+            if (item == NULL)
+                continue;
+            item->setBackgroundColor(QColor(125,125,125));
         }
     }
     mainLayout->addWidget(m_table);
@@ -106,17 +246,7 @@ void MazeWindow::initMaze()
     m_table->horizontalHeader()->hide();
     m_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     m_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-    for (int i = 0; i < row;i++ )
-    {
-        for(int j = 0; j< column;j++)
-        {
-                m_table->removeCellWidget(i,j);
-               QTableWidgetItem * item =  m_table->item(i, j);
-               if (item == NULL)
-                   continue;
-               item->setBackgroundColor(QColor(125,125,125));
-        }
-    }
+
 }
 
 
