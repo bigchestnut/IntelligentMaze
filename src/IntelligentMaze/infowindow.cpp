@@ -58,8 +58,18 @@ void InfoWindow::clearInfo()
     m_textBro1->clear();
 }
 
+void InfoWindow::addFindSearch(int i, int j)
+{
+    m_textBro1->append("递归搜索路径");
+   QString str =  QString::number(i);
+   QString str1 =  QString::number(j);
+   m_textBro1->append("位置 X："+str +"   Y: "+str1);
+    m_textBro1->append("-------------------");
+}
+
 void InfoWindow::addFindStep(int i, int j)
 {
+    m_textBro1->append("回溯确认路径");
     QString str =  QString::number(i);
     QString str1 =  QString::number(j);
     m_textBro1->append("位置 X："+str +"   Y: "+str1);
@@ -69,15 +79,9 @@ void InfoWindow::addFindStep(int i, int j)
 InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent)
   ,mainLayout(new QVBoxLayout())
   ,m_textBro1(new QTextBrowser())
-  //,m_textBro2(new QTextBrowser())
-  //,m_switchBtn(new QPushButton())
   ,m_textEdit(new QTextEdit())
-  //,m_scrollArea(new QScrollArea())
 {
-   // m_textBro2->setText("比较");
-   // m_switchBtn->setText("切换");
     mainLayout->addWidget(m_textBro1);
-    //mainLayout->addWidget(m_switchBtn, 1);
     this->setLayout(mainLayout);
 }
 

@@ -25,7 +25,7 @@ private:
     QRadioButton* m_Button1;
     QRadioButton* m_Button2;
     QRadioButton* m_Button3;
-    QRadioButton* m_Button4;
+    //QRadioButton* m_Button4;
     MazeWindow* mazeWindow;
 };
 

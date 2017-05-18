@@ -39,7 +39,7 @@ void Maze::findPathBFS()
     int i=1,j=1;
     QQueue<MyPoint*>* queue = new QQueue<MyPoint*>();
     queue->append(&m_maze[i][j]);
-
+    infoWindow->clearInfo();
     while(!queue->empty())
     {
         MyPoint* temp = queue->front();
@@ -47,11 +47,11 @@ void Maze::findPathBFS()
         i = temp->i;
         j = temp->j;
         m_maze[i][j].visited = true;
+        infoWindow->addFindSearch(temp->i,temp->j);
         mazeWindow->onFindStep(temp->lastDir,temp->i,temp->j);
         //判断终点
         if (i ==height-2 && j == width - 2 )
         {
-            infoWindow->clearInfo();
             //设置路径
             while(temp->lastDir != 0)
             {
@@ -124,7 +124,7 @@ void Maze::findPathDFS()
     int i=1,j=1;
     QStack<MyPoint*>* stack = new QStack<MyPoint*>();
     stack->append(&m_maze[i][j]);
-
+    infoWindow->clearInfo();
     while(!stack->empty())
     {
         MyPoint* temp = stack->top();
@@ -133,12 +133,12 @@ void Maze::findPathDFS()
         if(!m_maze[i][j].visited)
         {
             m_maze[i][j].visited = true;
+            infoWindow->addFindSearch(temp->i,temp->j);
             mazeWindow->onFindStep(temp->lastDir,temp->i,temp->j);
         }
         //判断终点
         if (i ==height-2 && j == width - 2 )
         {
-            infoWindow->clearInfo();
             //设置路径
             while(temp->lastDir != 0)
             {
@@ -219,6 +219,7 @@ void Maze::findPathAStar()
     m_maze[i][j].h = getHValue(i,j);
     m_maze[i][j].openOrClose = 1;
     openList->append(m_maze[i][j]);
+    infoWindow->clearInfo();
     while (!openList->empty())
     {
         qSort(openList->begin(),openList->end());
@@ -228,7 +229,7 @@ void Maze::findPathAStar()
         j = temp.j;
         if (i == height -2 && j == width -2)
         {
-            infoWindow->clearInfo();
+
             //设置路径
             while(temp.lastDir != 0)
             {
@@ -261,6 +262,8 @@ void Maze::findPathAStar()
             return;
         }
         m_maze[i][j].openOrClose = 2;
+        infoWindow->addFindSearch(temp.i,temp.j);
+        mazeWindow->onFindStep(temp.lastDir,temp.i,temp.j);
         //上
         if(i>2 && m_maze[i-1][j].state&&m_maze[i-2][j].openOrClose !=2)
         {

@@ -4,7 +4,7 @@
 #include <QCoreApplication>
 #include <QMessageBox>
 MazeWindow::MazeWindow(QWidget *parent) : QWidget(parent)
-   ,mainLayout(new QHBoxLayout(this))
+   ,mainLayout(new QVBoxLayout(this))
    ,m_label(new QLabel())
 {
     QFont ft;

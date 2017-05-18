@@ -17,6 +17,7 @@ public:
     void mazeEnd();
     void clearInfo();
     //寻路相关
+    void addFindSearch(int i, int j);
     void addFindStep(int i,int j);
 signals:
 

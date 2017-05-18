@@ -2,7 +2,7 @@
 #define MAZEWINDOW_H
 
 #include <QWidget>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QTableWidget>
 #include <maze.h>
 #include <QLabel>
@@ -37,7 +37,7 @@ public slots:
         void setFindPath(bool b);
 private:
     explicit MazeWindow(QWidget *parent = 0);
-    QHBoxLayout * mainLayout;
+    QVBoxLayout * mainLayout;
     QTableWidget* m_table;
     Maze*     m_maze;
     QLabel*   m_label;
