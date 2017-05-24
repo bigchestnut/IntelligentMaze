@@ -18,7 +18,7 @@ MazeWindow::MazeWindow(QWidget *parent) : QWidget(parent)
     this->tempRow = 13;
     this->startPosX = 1;
     this->startPosY = 1;
-    this->m_stepTime = 50;
+    this->m_stepTime = 10000;
     this->m_isCreating = false;
     this->m_isCreatMaze = false;
     this->m_isFindingPath = false;

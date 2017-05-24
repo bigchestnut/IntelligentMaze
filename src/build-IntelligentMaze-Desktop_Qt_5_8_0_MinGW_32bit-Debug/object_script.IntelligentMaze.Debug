@@ -10,6 +10,7 @@ INPUT(
 ./debug\mazewindow.o
 ./debug\infowindow.o
 ./debug\maze.o
+./debug\loginwindow.o
 ./debug\moc_mainwindow.o
 ./debug\moc_mainwindowcontainer.o
 ./debug\moc_upwindowcontainer.o
@@ -19,4 +20,5 @@ INPUT(
 ./debug\moc_comparelabel.o
 ./debug\moc_mazewindow.o
 ./debug\moc_infowindow.o
+./debug\moc_loginwindow.o
 );

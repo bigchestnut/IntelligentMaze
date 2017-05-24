@@ -10,6 +10,7 @@ INPUT(
 ./release\mazewindow.o
 ./release\infowindow.o
 ./release\maze.o
+./release\loginwindow.o
 ./release\moc_mainwindow.o
 ./release\moc_mainwindowcontainer.o
 ./release\moc_upwindowcontainer.o
@@ -19,4 +20,5 @@ INPUT(
 ./release\moc_comparelabel.o
 ./release\moc_mazewindow.o
 ./release\moc_infowindow.o
+./release\moc_loginwindow.o
 );
