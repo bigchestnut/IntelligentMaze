@@ -10,7 +10,7 @@ CompareLabel::CompareLabel(QWidget *parent) : QWidget(parent)
 {
     mazeWindow = MazeWindow::getInstance();
 
-    m_slider->setRange(10,10000);
+    m_slider->setRange(10,2000);
     m_slider->setValue(50);
     m_sliderLayout->addWidget(m_fastLabel);
     m_sliderLayout->addWidget(m_slider);

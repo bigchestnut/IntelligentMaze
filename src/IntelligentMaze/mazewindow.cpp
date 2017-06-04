@@ -18,7 +18,7 @@ MazeWindow::MazeWindow(QWidget *parent) : QWidget(parent)
     this->tempRow = 13;
     this->startPosX = 1;
     this->startPosY = 1;
-    this->m_stepTime = 10000;
+    this->m_stepTime = 50;
     this->m_isCreating = false;
     this->m_isCreatMaze = false;
     this->m_isFindingPath = false;
@@ -274,6 +274,15 @@ void MazeWindow::onFindReturn(int i, int j)
 
 }
 
+void MazeWindow::setGreen(int i, int j)
+{
+    if (j>= row -1 || j<=0 || i >=column -1|| i <=0 )
+        return;
+    QTableWidgetItem * item =  m_table->item(i, j);
+    if (item)
+        item->setBackgroundColor(QColor(0,255,0));
+}
+
 void MazeWindow::resetFind()
 {
     MyPoint **m_temp = m_maze->getMaze();
@@ -308,6 +317,11 @@ void MazeWindow::clearNotPath()
             }
         }
     }
+}
+
+Maze *MazeWindow::getMaze()
+{
+    return this->m_maze;
 }
 
 

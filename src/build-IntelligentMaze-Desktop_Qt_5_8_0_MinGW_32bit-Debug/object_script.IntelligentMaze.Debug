@@ -11,6 +11,7 @@ INPUT(
 ./debug\infowindow.o
 ./debug\maze.o
 ./debug\loginwindow.o
+./debug\population.o
 ./debug\moc_mainwindow.o
 ./debug\moc_mainwindowcontainer.o
 ./debug\moc_upwindowcontainer.o

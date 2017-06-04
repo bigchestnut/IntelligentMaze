@@ -58,6 +58,15 @@ void InfoWindow::clearInfo()
     m_textBro1->clear();
 }
 
+void InfoWindow::addInfo(QString str)
+{
+    m_textBro1->append(str);
+}
+
+void InfoWindow::addDai(int i)
+{
+}
+
 void InfoWindow::addFindSearch(int i, int j)
 {
     m_textBro1->append("递归搜索路径");

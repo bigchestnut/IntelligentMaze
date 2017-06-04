@@ -14,8 +14,10 @@ LoginWindow::LoginWindow(QWidget *parent) : QDialog (parent)
 {
     nameLayout->addWidget(name,1);
     nameLayout->addWidget(nameText,3);
+    nameText->setText("admin");
     passLayout->addWidget(pass,1);
     passLayout->addWidget(passText,3);
+    passText->setText("admin");
     loginLayout->addWidget(remCheck);
     loginLayout->addWidget(loginBtn);
     mainLayout->addLayout(nameLayout);

@@ -16,6 +16,8 @@ public:
     void mazeReturn(int level, int i, int j);
     void mazeEnd();
     void clearInfo();
+    void addInfo(QString str);
+    void addDai(int i);
     //寻路相关
     void addFindSearch(int i, int j);
     void addFindStep(int i,int j);

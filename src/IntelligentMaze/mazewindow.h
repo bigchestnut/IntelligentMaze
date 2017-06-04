@@ -20,8 +20,10 @@ public:
     void onFindStepBack(int dir, int i, int j);
     void onFindStep(int dir,int i,int j);
     void onFindReturn(int i,int j);
+    void setGreen(int i, int j);
     void resetFind();
     void clearNotPath();
+    Maze* getMaze();
 signals:
 
 public slots:

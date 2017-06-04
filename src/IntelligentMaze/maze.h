@@ -3,6 +3,8 @@
 #include <QStack>
 class MazeWindow;
 class InfoWindow;
+class Population;
+class Genome;
 class MyPoint
 {
 public:

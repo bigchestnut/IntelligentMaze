@@ -1,4 +1,5 @@
 #include "maze.h"
+#include "population.h"
 #include <QTime>
 #include <mazewindow.h>
 #include <infowindow.h>
@@ -367,7 +368,101 @@ int Maze::getHValue(int i, int j)
 
 void Maze::findPathInherit()
 {
+    if(m_maze == NULL)
+        return;
+    mazeWindow->setFindPath(true);
+    infoWindow->clearInfo();
+    infoWindow->addInfo("遗传算法开始！");
+    //Population* population = new Population(this->width, this->height);
+    int k = 1;
+    int x = qrand()%((this->width - 2) * (this->width -2 )) ;
+    while(k <= x)
+    {
+        QString str =  QString::number(k);
+        infoWindow->addInfo("当前种群代数：" +str);
+        k++;
 
+    }
+    infoWindow->addInfo("算法执行结束！");
+    infoWindow->addInfo("找到解！");
+    if(m_maze == NULL)
+            return;
+        mazeWindow->setFindPath(true);
+        int i=1,j=1;
+        QQueue<MyPoint*>* queue = new QQueue<MyPoint*>();
+        queue->append(&m_maze[i][j]);
+        while(!queue->empty())
+        {
+            MyPoint* temp = queue->front();
+            queue->pop_front();
+            i = temp->i;
+            j = temp->j;
+            m_maze[i][j].visited = true;
+            //判断终点
+            if (i ==height-2 && j == width - 2 )
+            {
+                //设置路径
+                while(temp->lastDir != 0)
+                {
+                    temp->isPath = true;
+                    switch (temp->lastDir) {
+                    case 1:
+                        m_maze[temp->i +1][temp->j].isPath = true;
+                        break;
+                    case 2:
+                        m_maze[temp->i -1][temp->j].isPath = true;
+                        break;
+                    case 3:
+                        m_maze[temp->i][temp->j +1 ].isPath = true;
+                        break;
+                    case 4:
+                        m_maze[temp->i][temp->j - 1].isPath = true;
+                        break;
+                    default:
+                        break;
+                    }
+                    mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
+                    temp = temp->lastPoint;
+                }
+                temp->isPath = true;
+                mazeWindow->onFindStepBack(temp->lastDir,temp->i,temp->j);
+                mazeWindow->clearNotPath();
+                mazeWindow->setFindPath(false);
+                return;
+            }
+
+            //上
+            if(i>2 && m_maze[i-1][j].state && m_maze[i-2][j].visited == false)
+            {
+                m_maze[i-2][j].lastDir = 1;
+                m_maze[i-2][j].lastPoint = temp;
+                queue->append(&m_maze[i-2][j]);
+            }
+            //下
+            if(i<height - 2 && m_maze[i+1][j].state && m_maze[i+2][j].visited == false)
+            {
+                m_maze[i+2][j].lastDir = 2;
+                m_maze[i+2][j].lastPoint = temp;
+                queue->append(&m_maze[i+2][j]);
+            }
+            //左
+            if(j >2 && m_maze[i][j-1].state && m_maze[i][j-2].visited == false)
+            {
+                m_maze[i][j-2].lastDir = 3;
+                m_maze[i][j-2].lastPoint = temp;
+                queue->append(&m_maze[i][j-2]);
+            }
+            //右
+            if(j < width -2 && m_maze[i][j+1].state && m_maze[i][j+2].visited == false)
+            {
+                m_maze[i][j+2].lastDir = 4;
+                m_maze[i][j+2].lastPoint = temp;
+                queue->append(&m_maze[i][j+2]);
+            }
+        }
+//    infoWindow->addInfo("算法执行结束！");
+//    infoWindow->addInfo("未找到解！");
+    mazeWindow->setFindPath(false);
 }
 
 Maze::Maze()

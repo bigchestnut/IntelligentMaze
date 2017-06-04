@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     mazewindow.cpp \
     infowindow.cpp \
     maze.cpp \
-    loginwindow.cpp
+    loginwindow.cpp \
+    population.cpp
 
 HEADERS  += mainwindow.h \
     mainwindowcontainer.h \
@@ -46,6 +47,7 @@ HEADERS  += mainwindow.h \
     mazewindow.h \
     infowindow.h \
     maze.h \
-    loginwindow.h
+    loginwindow.h \
+    population.h
 
 FORMS    +=
